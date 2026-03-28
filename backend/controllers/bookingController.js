@@ -17,7 +17,7 @@ exports.getAllBookings = async (req, res) => {
 // Create a booking
 exports.createBooking = async (req, res) => {
     const { guest_name, phone, room_id, check_in, check_out } = req.body;
-    
+
     if (!guest_name || !phone || !room_id || !check_in || !check_out) {
         return res.status(400).json({ message: 'Required fields missing' });
     }
