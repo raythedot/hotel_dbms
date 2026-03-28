@@ -20,7 +20,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="hero-image-container">
-                    <img src="/hero.png" alt="Hotel Room" style={{ width: '500px', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
+                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=2070" alt="Hotel Room" style={{ width: '500px', borderRadius: '20px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
                 </div>
             </div>
 
