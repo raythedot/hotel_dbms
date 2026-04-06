@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Plus, Filter } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import RoomTable from '../components/RoomTable';
 
 const Rooms = () => {
@@ -10,6 +10,7 @@ const Rooms = () => {
 
     const fetchRooms = async () => {
         try {
+            setLoading(true);
             const response = await axios.get('/api/rooms');
             setRooms(response.data);
             setLoading(false);
@@ -26,10 +27,14 @@ const Rooms = () => {
     return (
         <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '40px 0 20px' }}>
-                <h1 className="section-title" style={{ margin: 0 }}>Hotel Rooms</h1>
-                <Link to="/rooms/add" className="button-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px', width: 'auto' }}>
-                    <Plus size={18} /> Add New Room
-                </Link>
+                <h1 className="section-title" style={{ margin: 0 }}>
+                    All Hotel Rooms
+                </h1>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <Link to="/rooms/add" className="button-primary" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px', width: 'auto' }}>
+                        <Plus size={18} /> Add New Room
+                    </Link>
+                </div>
             </div>
 
             {loading ? (

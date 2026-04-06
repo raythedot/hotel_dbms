@@ -1,6 +1,12 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        navigate('/rooms');
+    };
     return (
         <div>
             <div className="hero">
@@ -11,12 +17,13 @@ const Home = () => {
                         Manage your bookings with ease and style.
                     </p>
                     <div className="search-box">
-                        <input type="text" className="input" placeholder="Where are you going?" />
                         <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
                             <input type="date" className="input" />
                             <input type="date" className="input" />
                         </div>
-                        <button className="button-primary" style={{ marginTop: '15px' }}>Search Rooms</button>
+                        <button className="button-primary" style={{ marginTop: '15px' }} onClick={handleSearch}>
+                            Search Rooms
+                        </button>
                     </div>
                 </div>
                 <div className="hero-image-container">
@@ -45,21 +52,21 @@ const Home = () => {
                     <Link to="/rooms" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <div className="card-content">
                             <h3>Standard Single</h3>
-                            <p className="price">$50 / night</p>
+                            <p className="price">₹2800 / night</p>
                             <span className="badge badge-available">Available</span>
                         </div>
                     </Link>
                     <Link to="/rooms" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <div className="card-content">
                             <h3>Deluxe Double</h3>
-                            <p className="price">$80 / night</p>
+                            <p className="price">₹4900 / night</p>
                             <span className="badge badge-available">Available</span>
                         </div>
                     </Link>
                     <Link to="/rooms" className="card" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <div className="card-content">
                             <h3>Executive Suite</h3>
-                            <p className="price">$150 / night</p>
+                            <p className="price">₹9500 / night</p>
                             <span className="badge badge-available">Available</span>
                         </div>
                     </Link>

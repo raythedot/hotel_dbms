@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
@@ -8,7 +9,22 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME,
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    connectTimeout: 5000 // 5 seconds timeout
 });
 
-module.exports = pool.promise();
+const promisePool = pool.promise();
+
+// Connection testing log
+promisePool.getConnection()
+    .then(conn => {
+        const fs = require('fs');
+        fs.writeFileSync('db_status.txt', 'Successfully connected to MySQL');
+        conn.release();
+    })
+    .catch(err => {
+        const fs = require('fs');
+        fs.writeFileSync('db_status.txt', 'DB ERROR: ' + err.message);
+    });
+
+module.exports = promisePool;

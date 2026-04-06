@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS bookings (
 
 -- Seed Data
 INSERT IGNORE INTO rooms (room_number, room_type, price, status) VALUES
-('101', 'Single', 50.00, 'Available'),
-('102', 'Double', 80.00, 'Available'),
-('201', 'Suite', 150.00, 'Available'),
-('202', 'Deluxe', 120.00, 'Available');
+('101', 'Single', 60.00, 'Available'),
+('102', 'Double', 90.00, 'Available'),
+('201', 'Suite', 160.00, 'Available'),
+('202', 'Deluxe', 130.00, 'Available');

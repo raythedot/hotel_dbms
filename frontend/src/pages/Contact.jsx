@@ -33,7 +33,7 @@ const Contact = () => {
                         <Mail color="#ff385c" size={32} />
                         <div>
                             <h4 style={{ margin: 0 }}>Email</h4>
-                            <p style={{ margin: 0, color: '#666' }}>support@hotelstay.com</p>
+                            <p style={{ margin: 0, color: '#666' }}>support@hotelvista.com</p>
                         </div>
                     </div>
                     <div className="stat-card" style={{ flexDirection: 'row', alignItems: 'center' }}>

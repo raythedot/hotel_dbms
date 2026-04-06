@@ -4,7 +4,7 @@ import { Home, LayoutDashboard, Bed, BookOpen, Mail } from 'lucide-react';
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <Link to="/" className="logo">HotelStay</Link>
+            <Link to="/" className="logo">HotelVista</Link>
             <div className="nav-links">
                 <Link to="/"><Home size={18} /> Home</Link>
                 <Link to="/dashboard"><LayoutDashboard size={18} /> Dashboard</Link>

@@ -35,7 +35,7 @@ const RoomTable = ({ rooms, fetchRooms }) => {
                         <tr key={room.id}>
                             <td>{room.room_number}</td>
                             <td>{room.room_type}</td>
-                            <td>${room.price}</td>
+                            <td>₹{room.price}</td>
                             <td>
                                 <span className={`badge ${room.status === 'Available' ? 'badge-available' : 'badge-occupied'}`}>
                                     {room.status}

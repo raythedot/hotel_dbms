@@ -18,12 +18,10 @@ const AddEditRoom = () => {
     useEffect(() => {
         if (isEdit) {
             axios.get(`/api/rooms/${id}`).then((res) => {
-                // Since our GET /api/rooms returns an array, let's find the one if we didn't have a specific GET /api/rooms/:id
-                // But for simplicity, I'll assume I should have added a GET /api/rooms/:id or just filter from all
-                axios.get('/api/rooms').then(all => {
-                    const room = all.data.find(r => r.id === parseInt(id));
-                    if (room) setFormData(room);
-                });
+                setFormData(res.data);
+            }).catch(err => {
+                console.error("Error fetching room details:", err);
+                alert("Failed to load room data.");
             });
         }
     }, [id, isEdit]);
@@ -45,7 +43,8 @@ const AddEditRoom = () => {
             navigate('/rooms');
         } catch (error) {
             console.error(error);
-            alert('Error saving roomData');
+            const errorMsg = error.response?.data?.message || 'Error saving roomData';
+            alert(errorMsg);
         }
     };
 
@@ -71,8 +70,8 @@ const AddEditRoom = () => {
                         </select>
                     </div>
                     <div style={{ marginBottom: '15px' }}>
-                        <label>Price ($)</label>
-                        <input type="number" name="price" value={formData.price} onChange={handleChange} className="input" step="0.01" required />
+                        <label>Price (₹)</label>
+                        <input type="number" name="price" value={formData.price} onChange={handleChange} className="input" min="500" max="5000" step="0.01" required />
                     </div>
                     <div style={{ marginBottom: '15px' }}>
                         <label>Status</label>

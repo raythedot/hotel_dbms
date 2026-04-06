@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const roomRoutes = require('./routes/roomRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
@@ -17,8 +18,10 @@ app.use(express.json());
 db.getConnection()
     .then(() => console.log('Successfully connected to MySQL Database'))
     .catch(err => {
+        const fs = require('fs');
+        const errorLog = 'DATABASE ERROR: ' + err.message + '\n' + err.stack;
+        fs.writeFileSync('startup_error.txt', errorLog);
         console.error('CRITICAL: Database connection failed!');
-        console.error('Make sure MySQL is running and credentials in .env are correct.');
         console.error(err.message);
     });
 
